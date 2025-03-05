@@ -1,0 +1,402 @@
+/* -------------------------------
+   Basic Variables for Colors
+--------------------------------- */
+:root {
+  --dark-bg: #0c0c0c;
+  --dark-bg-alt: #1a1a1d;
+  --accent-color1: #2a9d8f; /* Example accent color */
+  --accent-color2: #e76f51; /* Another accent color */
+  --text-color: #ffffff;
+  --text-subtle: #dad9d9;
+  --border-color: #444;
+}
+
+/* -------------------------------
+   What-Do Section Base Styles
+--------------------------------- */
+.what-do {
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  padding: 60px 0;
+}
+
+/* Container & Grid */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+[class*="col-"] {
+  padding: 0 15px;
+}
+
+/* Section Heading */
+.section-heading {
+  margin-bottom: 35px;
+}
+.section-title {
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+.section-subtitle {
+  color: #ccc;
+  line-height: 1.5;
+  font-size: 16px;
+}
+.vertical-line {
+  border-left: 1.36px solid #9293a5;
+  height: 73px;
+  margin: 0 auto;
+}
+
+/* -------------------------------
+   Desktop Tabs
+--------------------------------- */
+.tab-sidebar {
+  padding-right: 10px;
+  height: 530px;
+  /* overflow-y: scroll; */
+  overflow-y: auto;
+}
+.tab-sidebar::-webkit-scrollbar {
+  width: 4px;
+  background-color: #1b1b1b;
+}
+.tab-sidebar::-webkit-scrollbar-thumb {
+  background-color: #262626;
+}
+
+/* Nav Items & Active States */
+.nav-item {
+  margin-bottom: 25px;
+}
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.nav-link.active .what-do-tab,
+.nav-link:hover .what-do-tab {
+  opacity: 1;
+  background-color: #1a1a1d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab Layout */
+.what-do-tab {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: #1a1a1d;
+  /* opacity: 0.8; */
+  transition: all 0.3s;
+}
+.what-do-tab h6 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 500;
+  font-family: "Urbanist", sans-serif;
+}
+.what-do-tab span {
+  height: 50px;
+  width: 2px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-color1),
+    var(--accent-color2)
+  );
+  border-radius: 5px;
+}
+.what-do-tab .icon-bg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+}
+.what-do-tab .icon-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tab BG Variation (optional) */
+.tab-bg-1 {
+  border-left: 3px solid var(--accent-color1);
+}
+.tab-bg-2 {
+  border-left: 3px solid var(--accent-color2);
+}
+
+/* -------------------------------
+   Tab Content
+--------------------------------- */
+.tab-content .tab-pane {
+  display: none;
+  animation: fadeIn 0.4s;
+}
+.tab-content .tab-pane.active.show {
+  display: block;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* What-Do Info Items */
+.what-do-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* margin-top: 30px; */
+  align-items: stretch;
+}
+
+.what-do-info > [class*="col-"] {
+  display: flex;
+}
+
+.what-do-content {
+  flex: 1;                  /* Expand to fill parent column */
+  display: flex;            /* Make content flexible as well */
+  flex-direction: column;   /* Stack image, heading, text vertically */
+  justify-content: flex-start;
+
+
+  background-color: var(--dark-bg-alt);
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 50px 50px ;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+
+}
+
+
+.what-do-content::before {
+  /* Example 'petal' or curved shape behind the content */
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle at center,
+    var(--accent-color1) 0%,
+    transparent 70%
+  );
+  top: -60px;
+  left: -60px;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.what-do-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+.what-do-content img {
+  max-width: 80px;
+  margin: 0 auto;
+}
+.what-do-content h5 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 15px 0;
+  font-family: "Urbanist", sans-serif;
+}
+.what-do-content p {
+  font-size: 14px;
+  color: var(--text-subtle);
+  margin-bottom: 0;
+}
+.content-2::before {
+  background: radial-gradient(
+    circle at center,
+    var(--accent-color2) 0%,
+    transparent 70%
+  );
+}
+.content-3::before {
+  background: radial-gradient(
+    circle at center,
+    #e9c46a 0%,
+    transparent 70%
+  ); /* Another accent example */
+}
+.content-4::before {
+  background: radial-gradient(
+    circle at center,
+    #f4a261 0%,
+    transparent 70%
+  );
+}
+
+/* -------------------------------
+   Mobile Accordion
+--------------------------------- */
+.accordion {
+  border-top:none !important;
+}
+.accordion-item {
+  border-bottom: none !important;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.accordion-header {
+  background-color: #1a1a1d;
+}
+.accordion-button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: var(--text-color);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.accordion-button:hover {
+  background: #1a1a1d !important;
+}
+.accordion-button:focus {
+  outline: none !important;
+}
+.accordion-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: var(--dark-bg);
+  padding: 0 15px;
+}
+.accordion-collapse.show {
+  max-height: 999px; /* large enough to show content */
+  padding: 15px;
+}
+
+/* Hide Desktop Tabs on Mobile, Show on Desktop */
+@media (max-width: 991px) {
+  .d-lg-flex {
+    display: none !important;
+  }
+  .d-lg-none {
+    display: block !important;
+  }
+}
+
+/* Hide Mobile Accordion on Desktop, Show on Mobile */
+@media (min-width: 992px) {
+  .d-lg-none {
+    display: none !important;
+  }
+}
+
+
+
+
+
+/* -------------------------------------
+   Accordion Base
+-------------------------------------- */
+.accordion {
+  border: none !important; /* Adjust border color as needed */
+  margin-top: 1rem;
+  --bs-accordion-active-bg: #1a1a1d !important;
+  --bs-accordion-bg: #1a1a1d !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: white !important;
+  box-shadow: none !important;
+}
+
+/* Each Accordion Item */
+.accordion-item {
+  border: none !important; /* Matches top border color */
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden; /* Ensures corners are hidden when expanded */
+}
+
+/* Accordion Header Wrapper */
+.accordion-header {
+  background-color: #1a1a1d; /* Background for the header area */
+  
+}
+
+.accordion-header:focus-visible{
+  border: none !important;
+}
+
+/* The Button that Toggles Accordion Content */
+.accordion-button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0; /* Remove default button padding */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Hover & Focus States */
+.accordion-button:hover {
+  /* background: #333; */
+}
+.accordion-button:focus {
+  outline: none !important; /* Remove default focus outline */
+}
+
+/* Accordion Body (Collapsed by Default) */
+.accordion-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: #0c0c0c; /* Matches overall dark background */
+  padding: 0 15px; /* You can adjust this padding */
+}
+
+/* Expanded State */
+.accordion-collapse.show {
+  max-height: 999px; /* Large enough to reveal all content */
+  padding: 15px;     /* Restores actual padding when open */
+}
+
+/* (Optional) Additional Styling for the Content */
+.accordion-body {
+  color: #dad9d9; /* Slightly lighter text color */
+  font-size: 15px;
+  line-height: 1.5;
+  /* You can add more styling as needed */
+}
